@@ -1,38 +1,21 @@
 package com.dstealer.algrothims;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.After;
+import org.junit.Before;
 
 /**
  * Unit test for simple App.
  */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
+public class AppTest {
+    public static final ThreadLocal<Long> time = new ThreadLocal<>();
+
+    @Before
+    public void setUp() throws Exception {
+        time.set(System.nanoTime());
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
-
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+    @After
+    public void tearDown() throws Exception {
+        System.out.println("Time eclipsing: " + (System.nanoTime() - time.get()) + " ns");
     }
 }
