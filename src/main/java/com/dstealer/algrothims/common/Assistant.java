@@ -47,6 +47,28 @@ public abstract class Assistant {
     }
 
     /**
+     * 生成近乎有序数组
+     *
+     * @param n
+     * @param rangeL
+     * @param rangeR
+     * @return
+     */
+    public static int[] generateNealyOrderArray(int n, int rangeL, int rangeR) {
+        int[] arr = new int[n];
+        int range = rangeR - rangeL;
+        for (int i = 0; i < n; i++) {
+            arr[i] = (int) (range * (1.0 * i / n)) + +rangeL;
+        }
+        Random random = new Random();
+        int swapTime = random.nextInt(n) / 10;
+        for (int i = 0; i < swapTime; i++) {
+            Assistant.swapInt(arr, random.nextInt(n), random.nextInt(n));
+        }
+        return arr;
+    }
+
+    /**
      * 生成随机的数组
      *
      * @param n
@@ -93,14 +115,26 @@ public abstract class Assistant {
      * 打印数组
      *
      * @param arr
-     * @param with
+     * @param width
      */
-    public static void print(int[] arr, int with) {
+    public static void print(int[] arr, int width) {
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i] + "\t");
-            if ((i + 1) % with == 0) {
+            if ((i + 1) % width == 0) {
                 System.out.println();
             }
         }
+    }
+
+    /**
+     * 打印数组
+     *
+     * @param arr
+     */
+    public static void print(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + "\t");
+        }
+        System.out.println();
     }
 }

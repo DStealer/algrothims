@@ -6,6 +6,7 @@ import com.dstealer.algrothims.common.Assistant;
  * 插入排序,
  * 1 从第1个位置外层遍历元素,设当前遍历元素下标为i
  * 2 用当前元素与前继节点比较,如果小于前继节点,则交换位置,循环此步直至不小于前继节点
+ * o(n2)
  */
 public class InsertionSort {
     /**

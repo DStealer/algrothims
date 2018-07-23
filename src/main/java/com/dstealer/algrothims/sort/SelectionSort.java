@@ -7,6 +7,7 @@ import com.dstealer.algrothims.common.Assistant;
  * 1 外层遍历数组, 并记录此次遍历的下标位置i
  * 2 遍历i以及i之后的元素,寻找最小的元素并记录下标j
  * 3 交换i和j位置的元素
+ *  o(n2)
  */
 public class SelectionSort {
     /**

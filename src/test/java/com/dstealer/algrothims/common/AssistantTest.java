@@ -15,6 +15,12 @@ public class AssistantTest {
     }
 
     @Test
+    public void generateNealyOrderArray() {
+        int[] arr = Assistant.generateNealyOrderArray(100, 100, 10000);
+        System.out.println(Arrays.toString(arr));
+    }
+
+    @Test
     public void print() {
         int[] arr = Assistant.generateRandomArray(100, 0, 100);
         Assistant.print(arr, 10);
