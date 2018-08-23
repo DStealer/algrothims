@@ -29,9 +29,11 @@ public abstract class Assistant {
      * @return
      */
     public static void swapInt(int[] arr, int i1, int i2) {
-        arr[i1] = arr[i1] + arr[i2];
-        arr[i2] = arr[i1] - arr[i2];
-        arr[i1] = arr[i1] - arr[i2];
+        if (i1 != i2) {
+            arr[i1] = arr[i1] + arr[i2];
+            arr[i2] = arr[i1] - arr[i2];
+            arr[i1] = arr[i1] - arr[i2];
+        }
     }
 
     /**
