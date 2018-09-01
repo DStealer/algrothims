@@ -14,4 +14,13 @@ public class QuickSortTest {
         System.out.println(Arrays.toString(arr));
         Assistant.checkAsc(arr);
     }
+
+    @Test
+    public void sort2() {
+        int[] arr = Assistant.generateRandomArray(10, 100);
+        System.out.println(Arrays.toString(arr));
+        QuickSort.sort2(arr);
+        System.out.println(Arrays.toString(arr));
+        Assistant.checkAsc(arr);
+    }
 }

@@ -15,6 +15,10 @@ public class QuickSort {
         _sort(arr, 0, arr.length - 1);
     }
 
+    public static void sort2(int[] arr) {
+        _sort2(arr, 0, arr.length - 1);
+    }
+
     private static void _sort(int[] arr, int l, int r) {
         if (l >= r) {
             return;
@@ -50,9 +54,16 @@ public class QuickSort {
     private static int partition2(int[] arr, int l, int r) {
         //在数组近乎有序的情况下,优化标杆值
         Assistant.swapInt(arr, l, new Random().nextInt(r - l + 1) + l);
+        
         int j = l;
         int v = arr[l];
-        
-        return 0;
+        for (int i = l + 1; i <= r; i++) {
+            if (arr[i] < v) {
+                Assistant.swapInt(arr, j + 1, i);
+                j++;
+            }
+        }
+        Assistant.swapInt(arr, l, j);
+        return j;
     }
 }
