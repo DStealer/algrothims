@@ -7,6 +7,7 @@ import com.dstealer.algrothims.common.Assistant;
  * 1 从第1个位置外层遍历元素,设当前遍历元素下标为i
  * 2 用当前元素与前继节点比较,如果小于前继节点,则交换位置,循环此步直至不小于前继节点
  * o(n2)
+ * 默认第i个元素之前的元素是有序的
  */
 public class InsertionSort {
     /**
