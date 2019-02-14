@@ -26,11 +26,11 @@ public class HeapSort {
      * @param len 堆大小
      */
     public static void _sort(int[] arr, int len) {
-        //first heapify
-        for (int i = (len / 2 - 1); i >= 0; i--) {
+        //heapify
+        for (int i = (len / 2 - 1); i >= 0; i--) { //第一个非页节点
             _shiftDown(arr, len, i);
         }
-        //排序
+        //最大堆出栈 即排序
         for (int i = len - 1; i > 0; i--) {
             Assistant.swapInt(arr, i, 0);
             _shiftDown(arr, i, 0);
@@ -39,23 +39,42 @@ public class HeapSort {
     }
 
     /**
-     * @param arr 数组
-     * @param len 堆大小
-     * @param pos 需要寻找位置的元素
+     * 出堆和堆化时需要
+     *
+     * @param arr   数组
+     * @param len   堆大小
+     * @param index 需要寻找位置的元素
      */
-    private static void _shiftDown(int[] arr, int len, int pos) {
-        while (2 * pos + 1 < len) {
-            int ll = 2 * pos + 1;
-            int lr = ll + 1;
-            int mc = ll;
-            if (lr < len && arr[lr] > arr[ll]) {
-                mc = lr;
+    private static void _shiftDown(int[] arr, int len, int index) {
+        while (2 * index + 1 < len) { //有左子节点
+            int leftNodeIndex = 2 * index + 1; //左子节点索引
+            int rightNodeIndex = 2 * index + 2; //右子节点索引
+
+            int maxNodePos = leftNodeIndex;
+            if (rightNodeIndex < len && arr[rightNodeIndex] > arr[leftNodeIndex]) { // 有右子节点 并且 右子节点比左子节点大
+                maxNodePos = rightNodeIndex;
             }
-            if (arr[pos] >= arr[mc]) {
+
+            if (arr[index] >= arr[maxNodePos]) {
                 break;
             }
-            Assistant.swapInt(arr, pos, mc);
-            pos = mc;
+            Assistant.swapInt(arr, index, maxNodePos);
+
+            index = maxNodePos;
+        }
+    }
+
+    /**
+     * 入堆时需要的操作
+     *
+     * @param arr
+     * @param len
+     * @param index
+     */
+    private static void _shiftUP(int[] arr, int len, int index) {
+        while (index > 1 && arr[index] > arr[index / 2]) {
+            Assistant.swapInt(arr, index, index / 2);
+            index = index / 2;
         }
     }
 }

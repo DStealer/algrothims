@@ -43,12 +43,10 @@ public class QuickSort {
 
 
     private static int partition(int[] arr, int l, int r) {
-        int j = l;
-        int v = arr[l];
+        int j = l; //j是标杆位置
         for (int i = l + 1; i <= r; i++) {
-            if (arr[i] < v) {
-                Assistant.swapInt(arr, j + 1, i);
-                j++;
+            if (arr[i] < arr[l]) {
+                Assistant.swapInt(arr, i, j++);
             }
         }
         Assistant.swapInt(arr, l, j);
