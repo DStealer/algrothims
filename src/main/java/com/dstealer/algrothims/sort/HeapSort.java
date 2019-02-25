@@ -72,8 +72,8 @@ public class HeapSort {
      * @param index
      */
     private static void _shiftUP(int[] arr, int len, int index) {
-        while (index > 1 && arr[index] > arr[index / 2]) {
-            Assistant.swapInt(arr, index, index / 2);
+        while (index > 0 && arr[index] > arr[(index - 1) / 2]) {
+            Assistant.swapInt(arr, index, (index - 1) / 2);
             index = index / 2;
         }
     }
