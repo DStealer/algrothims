@@ -27,7 +27,7 @@ public class HeapSort {
      */
     public static void _sort(int[] arr, int len) {
         //heapify
-        for (int i = (len / 2 - 1); i >= 0; i--) { //第一个非页节点
+        for (int i = (len / 2 - 1); i >= 0; i--) { //第一个非页节点，非叶节点需要重新确定在堆中的位置
             _shiftDown(arr, len, i);
         }
         //最大堆出栈 即排序
@@ -39,7 +39,7 @@ public class HeapSort {
     }
 
     /**
-     * 出堆和堆化时需要
+     * 出堆和堆化时需要，处理成每个父节点均比子节点大
      *
      * @param arr   数组
      * @param len   堆大小
@@ -65,7 +65,7 @@ public class HeapSort {
     }
 
     /**
-     * 入堆时需要的操作
+     * 入堆时需要的操作，在数组最后添加元素，并调整到合适位置，向上移动
      *
      * @param arr
      * @param len
