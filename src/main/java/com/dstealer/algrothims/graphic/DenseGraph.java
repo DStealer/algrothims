@@ -1,7 +1,9 @@
 package com.dstealer.algrothims.graphic;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * 稠密图 使用邻接矩阵实现
@@ -42,7 +44,11 @@ public class DenseGraph {
      * @return
      */
     public boolean hasEdge(int x, int y) {
-        return this.g[x][y];
+        if (directed) {
+            return this.g[x][y];
+        } else {
+            return this.g[x][y] || this.g[y][x];
+        }
     }
 
     public int getEdge() {
@@ -81,5 +87,55 @@ public class DenseGraph {
             edgeArr[i] = edges.get(i);
         }
         return edgeArr;
+    }
+
+    //深度优先遍历
+    public void dfs() {
+        boolean[] visited = new boolean[this.n];
+        int count = 0;
+        for (int i = 0; i < this.n; i++) {
+            if (!visited[i]) {
+                dfs(i, visited);
+                count++;
+            }
+        }
+        System.out.println("联通分量:" + count);
+    }
+
+    private void dfs(int x, boolean[] visited) {
+        visited[x] = true;
+        System.out.println("visit:" + x);
+        for (int i = 0; i < this.n; i++) {
+            if (this.g[x][i] && !visited[i]) {
+                dfs(i, visited);
+            }
+        }
+    }
+
+    //广度优先遍历
+    public void bfs() {
+        boolean[] visited = new boolean[this.n];
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i = 0; i < this.n; i++) {
+            if (!visited[i]) {
+                bfs(i, visited, queue);
+            }
+        }
+    }
+
+    private void bfs(int x, boolean[] visited, Queue<Integer> queue) {
+        queue.add(x);
+        visited[x] = true;
+        System.out.println("visit:" + x);
+        while (!queue.isEmpty()) {
+            Integer y = queue.poll();
+            for (int i = 0; i < this.n; i++) {
+                if (this.g[y][i] && !visited[i]) {
+                    queue.add(i);
+                    visited[i] = true;
+                    System.out.println("visit:" + i);
+                }
+            }
+        }
     }
 }

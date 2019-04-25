@@ -1,5 +1,7 @@
 package com.dstealer.algrothims.graphic;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Vector;
 
 /**
@@ -65,5 +67,55 @@ public class SparseGraph {
     public Vector<Integer> visit(int x) {
         assert x >= 0 && x < this.n;
         return this.g.get(x);
+    }
+
+    //深度优先遍历
+    public void dfs() {
+        boolean[] visited = new boolean[this.n];
+        int count = 0;
+        for (int i = 0; i < this.n; i++) {
+            if (!visited[i]) {
+                dfs(i, visited);
+                count++;
+            }
+        }
+        System.out.println("联通分量:" + count);
+    }
+
+    private void dfs(int x, boolean[] visited) {
+        visited[x] = true;
+        System.out.println("visit:" + x);
+        for (Integer y : this.g.get(x)) {
+            if (!visited[y]) {
+                dfs(y, visited);
+            }
+        }
+    }
+
+    //广度优先遍历
+    public void bfs() {
+        boolean[] visited = new boolean[this.n];
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i = 0; i < this.n; i++) {
+            if (!visited[i]) {
+                bfs(i, visited, queue);
+            }
+        }
+    }
+
+    private void bfs(int i, boolean[] visited, Queue<Integer> queue) {
+        queue.add(i);
+        visited[i] = true;
+        System.out.println("visit:" + i);
+        while (!queue.isEmpty()) {
+            Integer x = queue.poll();
+            for (Integer y : this.g.get(x)) {
+                if (!visited[y]) {
+                    System.out.println("visit:" + y);
+                    queue.add(y);
+                    visited[y] = true;
+                }
+            }
+        }
     }
 }

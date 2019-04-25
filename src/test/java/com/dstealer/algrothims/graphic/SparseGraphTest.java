@@ -26,4 +26,18 @@ public class SparseGraphTest {
         SparseGraph g2 = GraphData.getSparseUndirectedGraph();
         g2.print();
     }
+
+    @Test
+    public void dfs() {
+        SparseGraph g1 = GraphData.getSparsedirectedGraph();
+        g1.print();
+        g1.dfs();
+    }
+
+    @Test
+    public void bfs() {
+        SparseGraph g1 = GraphData.getSparsedirectedGraph();
+        g1.print();
+        g1.bfs();
+    }
 }

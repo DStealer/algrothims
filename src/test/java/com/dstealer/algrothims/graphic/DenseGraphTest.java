@@ -26,4 +26,18 @@ public class DenseGraphTest {
         DenseGraph g2 = GraphData.getDenseUndirectedGraph();
         g2.print();
     }
+
+    @Test
+    public void dfs() {
+        DenseGraph g1 = GraphData.getDenseDirectedGraph();
+        g1.print();
+        g1.dfs();
+    }
+
+    @Test
+    public void bfs() {
+        DenseGraph g1 = GraphData.getDenseDirectedGraph();
+        g1.print();
+        g1.bfs();
+    }
 }

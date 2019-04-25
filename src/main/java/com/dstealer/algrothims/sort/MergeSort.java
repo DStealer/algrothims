@@ -39,7 +39,7 @@ public class MergeSort {
         if (mid + 1 < r) {
             _sortTop2Bottom(arr, mid + 1, r);
         }
-        if (arr[mid] < arr[mid + 1]) { //有序优化,已经有序
+        if (arr[mid] > arr[mid + 1]) { //如果左边最大值  大于 右边最小值 才需要操作
             merge(arr, l, mid, r);
         }
     }
