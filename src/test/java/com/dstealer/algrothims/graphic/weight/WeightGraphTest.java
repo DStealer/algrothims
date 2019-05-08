@@ -51,4 +51,16 @@ public class WeightGraphTest {
         System.out.println(mst.getWeight());
         System.out.println(mst.getMst());
     }
+
+    @Test
+    public void tt04() {
+        KruskalMST mst = new KruskalMST(this.g);
+        System.out.println(mst.getWeight());
+        System.out.println(mst.getMst());
+    }
+
+    @Test
+    public void tt05() {
+        DijkstraST st = new DijkstraST(this.g, 0);
+    }
 }

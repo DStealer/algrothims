@@ -31,9 +31,8 @@ public class WeightGraph {
         assert (w >= 0 && w < this.node);
         assert (v != w);
         this.edge = this.edge + 2;
-        Edge wg = new Edge(v, w, weight);
-        this.g.get(v).add(wg);
-        this.g.get(w).add(wg);
+        this.g.get(v).add(new Edge(v, w, weight));
+        this.g.get(w).add(new Edge(w, v, weight));
     }
 
     public Vector<Edge> visit(int x) {

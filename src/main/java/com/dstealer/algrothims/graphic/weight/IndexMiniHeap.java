@@ -75,11 +75,14 @@ public class IndexMiniHeap<T extends Comparable> {
         }
     }
 
+    public boolean contain(int i) {
+        return this.data[i] != null;
+    }
+
     public T min() {
         assert this.count > -1;
         T t = this.data[this.dataIndexes[0]];
         this.data[this.dataIndexes[0]] = null;
-        this.dataIndexes[0] = 0;
         swap(this.count--, 0);
         shiftDown(0);
         return t;
@@ -89,7 +92,6 @@ public class IndexMiniHeap<T extends Comparable> {
         assert this.count > -1;
         int t = this.dataIndexes[0];
         this.data[this.dataIndexes[0]] = null;
-        this.dataIndexes[0] = 0;
         swap(this.count--, 0);
         shiftDown(0);
         return t;
