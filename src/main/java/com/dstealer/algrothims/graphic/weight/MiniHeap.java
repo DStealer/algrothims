@@ -52,10 +52,11 @@ public class MiniHeap<T extends Comparable> {
         return t;
     }
 
+
     private void shiftDown(int k) {
-        while ((2 * k + 1) < this.count) {
+        while ((2 * k + 1) <= this.count) {
             int si = 2 * k + 1;
-            if (si + 1 < this.count && this.data[si].compareTo(this.data[si + 1]) > 0) {
+            if (si + 1 <= this.count && this.data[si].compareTo(this.data[si + 1]) > 0) {
                 si = si + 1;
             }
             if (this.data[k].compareTo(this.data[si]) < 0) {
